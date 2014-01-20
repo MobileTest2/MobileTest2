@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header" data-position="fixed">
+                <h1>Chameleon i</h1>
+            </div>
+ 
+            <div data-role="content">
+                <a  data-role="button" onclick="get_login(this)" data-theme="b">Login</a>
+				<br /><br /><br />
+				<button  onclick="get_login(this)">click</button>
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+                <h1>Chameleon i - Online recruitment software</h1>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">    
+    function get_login(ss){
+		var j = {};
+		j.action = 'get_login';
+		j.username = 'tech1';
+		j.password = 't0ck1';
+		get_json(j, function(json){
+		
+		alert(json);
+		alert(json.length);
+		}); 
+	}
+	
+	function get_json(parms, callback) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            crossDomain: true,
+            url: "http://www.chameleoni.mobi/_api.aspx?auth=",
+            data: parms,
+            dataType: "json",
+            timeout: 50000,
+            success: callback,
+            error: function () {
+                alert("Sorry, I can't get the data");
+            }
+        });
+    }
+   
+</script>
+<script type="text/javascript" src="phonegap.js"></script>
